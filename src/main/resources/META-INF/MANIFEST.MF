@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Export-Package: com.simpoir
+Bundle-Vendor: Nuxeo
+Bundle-ActivationPolicy: lazy
+Bundle-ClassPath: .
+Bundle-Version: 5.5.0-01
+Bundle-Name: lazy-login
+Bundle-ManifestVersion: 2
+Nuxeo-Component: 
+Bundle-SymbolicName: com.simpoir.lazylogin
+
