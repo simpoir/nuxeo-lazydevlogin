@@ -5,6 +5,10 @@
 <%@ page import="org.nuxeo.runtime.api.Framework"%>
 <%@ page import="org.nuxeo.ecm.platform.web.common.admin.AdminStatusHelper"%>
 <%@ page import="java.util.Locale"%>
+<%@ page import="java.util.List"%>
+<%@ page import="org.nuxeo.ecm.platform.usermanager.UserService" %>
+<%@ page import="org.nuxeo.ecm.platform.usermanager.UserManager" %>
+<%@ page import="java.text.MessageFormat" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%
@@ -291,7 +295,15 @@ function focusOn(eltId) {
                 }
               </script>
               <h3>Quick login</h3>
-              <a href="javascript:autofill('Administrator', 'Administrator')">Administrator</a>
+              <ul>
+                <%
+                  UserManager um = Framework.getService(UserManager.class);
+                  List<String> all_users = um.getUserIds();
+                  for (String uid : all_users) {
+                    out.write(MessageFormat.format("<li><a href=\"javascript:autofill(''{0}'', ''{0}'')\">{0}</a></li>", uid));
+                  }
+                %>
+              </ul>
             </div>
             <table>
              <tr>
